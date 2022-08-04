@@ -14,7 +14,7 @@ class Register
 {
     public function execute()
     {
-        include_once('utils/variables.php');
+        include_once('assets/utils.php');
 
         // vérification champs vides
         if (

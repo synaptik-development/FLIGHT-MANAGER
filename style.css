@@ -1,0 +1,126 @@
+.btn {
+  background-color: rgb(175, 170, 170);
+  color: white;
+  transition: 500ms;
+  padding: 1rem;
+  width: fit-content;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: rgb(128, 124, 124);
+}
+
+body {
+  overflow-x: hidden;
+  height: 99vh;
+}
+
+/* page login */
+.login {
+  display: flex;
+  flex-direction: column;
+}
+.login_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c7c7c7;
+  padding: 0.5rem 1rem;
+}
+.login_header img {
+  max-width: 100px;
+  object-fit: cover;
+}
+.login_header h1 {
+  font-size: 1rem;
+  color: white;
+}
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(199, 199, 199, 0.6784313725);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* homepage */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.homepage_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c7c7c7;
+  padding: 0.5rem 1rem;
+}
+.homepage_header_title {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.homepage_header_title h1 {
+  font-size: 1rem;
+}
+.homepage_header_title img {
+  max-width: 100px;
+  object-fit: cover;
+}
+.homepage_header_user-info {
+  color: rgba(104, 103, 103, 0.849);
+}
+.homepage_header_user-info span {
+  color: black;
+}
+.homepage_main {
+  display: flex;
+  justify-content: space-between;
+}
+.homepage_main_calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(199, 199, 199, 0.6784313725);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.homepage_main_events {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.homepage_main_events_items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(199, 199, 199, 0.6784313725);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.homepage_main_events_items .event-item {
+  border-bottom: 1px solid black;
+  margin: 0.5rem;
+}
+.homepage_main a {
+  text-decoration: none;
+  color: rgb(82, 82, 82);
+  transition: 500ms;
+  cursor: pointer;
+}
+.homepage_main a:hover {
+  color: rgb(0, 0, 0);
+}
+
+/* page error */
+.error-message {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -9,14 +9,16 @@ require_once('src/lib/database.php');
 use App\Lib\Database\DatabaseConnection;
 use DateTime;
 
+// $flight->date = date_format(new DateTime($row['departure']), 'd-m-Y');
+// $flight->arrival = date_format(new DateTime($row['arrival']), 'H:i');
+
 class Flight
 {
     public string $flightId;
     public string $userId;
     public string $planeId;
-    public string $departure;
-    public string $date;
-    public string $arrival;
+    public DateTime $departure;
+    public DateTime $arrival;
     public string $duration;
     public string $price;
 }
@@ -29,7 +31,7 @@ class FlightsRepository
     public function getAllFlights(): array
     {
         $statement = $this->dbConnect->getConnection()->query(
-            "SELECT * FROM flights ORDER BY departure DESC"
+            "SELECT * FROM flights ORDER BY departure ASC"
         );
 
         $flights = [];
@@ -38,9 +40,8 @@ class FlightsRepository
             $flight->flightId = $row['id'];
             $flight->userId = $row['user_id'];
             $flight->planeId = $row['plane_id'];
-            $flight->date = date_format(new DateTime($row['departure']), 'd-m-Y');
-            $flight->departure = date_format(new DateTime($row['departure']), 'H:i');
-            $flight->arrival = date_format(new DateTime($row['arrival']), 'H:i');
+            $flight->departure = new DateTime($row['departure']);
+            $flight->arrival = new DateTime($row['arrival']);
             $flight->price = $row['price'];
             $flights[] = $flight;
         }
@@ -51,7 +52,7 @@ class FlightsRepository
     public function getUserFlights(string $userId): array
     {
         $statement = $this->dbConnect->getConnection()->prepare(
-            "SELECT * FROM flights WHERE user_id = ? ORDER BY departure DESC"
+            "SELECT * FROM flights WHERE user_id = ? ORDER BY departure ASC"
         );
         $statement->execute([$userId]);
 
@@ -61,9 +62,8 @@ class FlightsRepository
             $flight->flightId = $row['id'];
             $flight->userId = $row['user_id'];
             $flight->planeId = $row['plane_id'];
-            $flight->date = date_format(new DateTime($row['departure']), 'd-m-Y');
-            $flight->departure = date_format(new DateTime($row['departure']), 'H:i');
-            $flight->arrival = date_format(new DateTime($row['arrival']), 'H:i');
+            $flight->departure = new DateTime($row['departure']);
+            $flight->arrival = new DateTime($row['arrival']);
             $flight->price = $row['price'];
             $flights[] = $flight;
         }
@@ -87,9 +87,8 @@ class FlightsRepository
         $flight->flightId = $row['id'];
         $flight->userId = $row['user_id'];
         $flight->planeId = $row['plane_id'];
-        $flight->date = date_format(new DateTime($row['departure']), 'd-m-Y');
-        $flight->departure = date_format(new DateTime($row['departure']), 'H:i');
-        $flight->arrival = date_format(new DateTime($row['arrival']), 'H:i');
+        $flight->departure = new DateTime($row['departure']);
+        $flight->arrival = new DateTime($row['arrival']);
         $flight->price = $row['price'];
 
         return $flight;

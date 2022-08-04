@@ -1,0 +1,26 @@
+{
+  "name": "flight-manager",
+  "version": "1.0.0",
+  "description": "Application de gestion de club ULM",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "sass": "sass --watch ./scss/style.scss:./style.css",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synaptik-development/FLIGHT-MANAGER.git"
+  },
+  "author": "synaptik-development",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synaptik-development/FLIGHT-MANAGER/issues"
+  },
+  "homepage": "https://github.com/synaptik-development/FLIGHT-MANAGER#readme",
+  "dependencies": {
+    "sass": "^1.54.0"
+  }
+}

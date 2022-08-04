@@ -18,6 +18,8 @@ class Homepage
 {
     public function execute(string $userId)
     {
+        include_once('assets/utils.php');
+
         // récupération utilisateur connecté
         $usersRepository = new UsersRepository();
         $usersRepository->dbConnect = new DatabaseConnection();
@@ -27,6 +29,11 @@ class Homepage
         $flightsRepository = new FlightsRepository();
         $flightsRepository->dbConnect = new DatabaseConnection();
         $flights = $flightsRepository->getUserFlights($userId);
+
+        // vols du jours
+        $todayFlights = array_filter($flights, 'checkEgality');
+        // autres vols
+        $otherFligths = array_filter($flights, 'checkInegality');
 
         // récupérations des modèles d'avions
         $planesRepository = new PlanesRepository();

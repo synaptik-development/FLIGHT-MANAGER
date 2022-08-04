@@ -6,17 +6,15 @@ namespace App\Controllers\Users\Login;
 
 require_once('src/lib/database.php');
 require_once('src/model/users.php');
-require_once('src/controllers/homepage.php');
 
 use App\Lib\Database\DatabaseConnection;
 use App\Model\Users\UsersRepository;
-use App\Controllers\Homepage\Homepage;
 
 class Login
 {
     public function execute(array $input)
     {
-        include_once('utils/variables.php');
+        include_once('assets/utils.php');
 
         //vérification champs vides
         if (!empty($input['email']) && !empty($input['password'])) {
