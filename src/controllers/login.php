@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Users\Login;
+namespace App\Controllers\Login;
 
 require_once('src/lib/database.php');
 require_once('src/model/users.php');
@@ -12,6 +12,7 @@ use App\Model\Users\UsersRepository;
 
 class Login
 {
+
     public function execute(array $input)
     {
         include_once('assets/utils.php');

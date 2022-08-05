@@ -18,7 +18,7 @@ class User
     public string $password;
     public string $timeCounter;
     public string $credits;
-    public string $inscriptionDate;
+    public DateTime $inscriptionDate;
     public string $isPilot;
     public string $isInstructor;
     public string $isManager;
@@ -45,7 +45,7 @@ class UsersRepository
             $user->password = $row['password'];
             $user->timeCounter = $row['time_counter'];
             $user->credits = $row['credits'];
-            $user->inscriptionDate = date_format(new DateTime($row['inscription_date']), 'd-m-Y');
+            $user->inscriptionDate = new DateTime($row['inscription_date']);
             $user->isPilot = $row['pilot'];
             $user->isInstructor = $row['instructor'];
             $user->isManager = $row['manager'];
@@ -75,10 +75,10 @@ class UsersRepository
         $user->password = $row['password'];
         $user->timeCounter = $row['time_counter'];
         $user->credits = $row['credits'];
-        $user->inscriptionDate = date_format(new DateTime($row['inscription_date']), 'd-m-Y');
-        $user->pilot = $row['pilot'];
-        $user->instructor = $row['instructor'];
-        $user->manager = $row['manager'];
+        $user->inscriptionDate = new DateTime($row['inscription_date']);
+        $user->isPilot = $row['pilot'];
+        $user->isInstructor = $row['instructor'];
+        $user->isManager = $row['manager'];
 
         return $user;
     }
@@ -104,10 +104,10 @@ class UsersRepository
         $user->password = $row['password'];
         $user->timeCounter = $row['time_counter'];
         $user->credits = $row['credits'];
-        $user->inscriptionDate = date_format(new DateTime($row['inscription_date']), 'd-m-Y');
-        $user->pilot = $row['pilot'];
-        $user->instructor = $row['instructor'];
-        $user->manager = $row['manager'];
+        $user->inscriptionDate = new DateTime($row['inscription_date']);
+        $user->isPilot = $row['pilot'];
+        $user->isInstructor = $row['instructor'];
+        $user->isManager = $row['manager'];
 
         return $user;
     }
