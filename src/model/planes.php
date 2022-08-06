@@ -11,7 +11,7 @@ use DateTime;
 
 class Plane
 {
-    public string $planeId;
+    public string $id;
     public string $registration;
     public string $model;
     public string $purchaseDate;
@@ -34,7 +34,7 @@ class PlanesRepository
         $planes = [];
         while ($row = $statement->fetch()) {
             $plane = new Plane();
-            $plane->planeId = $row['id'];
+            $plane->id = $row['id'];
             $plane->registration = $row['registration'];
             $plane->model = $row['model'];
             $plane->purchaseDate = date_format(new DateTime($row['purchase_date']), 'd-m-Y');
@@ -60,7 +60,7 @@ class PlanesRepository
         }
 
         $plane = new Plane();
-        $plane->planeId = $row['id'];
+        $plane->id = $row['id'];
         $plane->registration = $row['registration'];
         $plane->model = $row['model'];
         $plane->purchaseDate = date_format(new DateTime($row['purchase_date']), 'd-m-Y');

@@ -18,4 +18,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('templates/layout.php'); ?>
+<?php require('layout.php'); ?>

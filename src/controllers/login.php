@@ -35,7 +35,7 @@ class Login
             if (crypt($password, $hash) !== $success->password) {
                 throw new \Exception('Mot de passe incorrect.');
             } else {
-                $_SESSION['userId'] = $success->userId;
+                $_SESSION['userId'] = $success->id;
                 header('location: index.php');
             }
         }

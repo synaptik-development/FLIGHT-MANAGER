@@ -7,7 +7,7 @@
     <header class="header header--connected">
         <div class="header_username">
             <?= $user->lastname . ' ' . $user->firstname; ?><br>
-            <a href="index.php?action=user&userId=<?= urlencode($user->userId) ?>">voir profil</a>
+            <a href="index.php?action=user&id=<?= urlencode($user->id) ?>">voir profil</a>
         </div>
 
         <div class="header_title">
@@ -48,11 +48,11 @@
                     ?>
                 <div class="event-item">
                     <a href="#">
-                        n° de vol : <?= $flight->flightId; ?><br>
+                        n° de vol : <?= $flight->id; ?><br>
                         <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                        <?php if ($plane->planeId == $flight->planeId) : ?>
+                        <?php if ($plane->id == $flight->id) : ?>
                         appareil : <?= $plane->registration; ?><br>
                         <?php endif; ?>
                         <?php
@@ -78,12 +78,12 @@
                     ?>
                 <div class="event-item">
                     <a href="#">
-                        n° de vol : <?= $flight->flightId; ?><br>
+                        n° de vol : <?= $flight->id; ?><br>
                         date : <?= date_format($flight->departure, 'd-m-Y'); ?><br>
                         <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                        <?php if ($plane->planeId == $flight->planeId) : ?>
+                        <?php if ($plane->id == $flight->id) : ?>
                         appareil : <?= $plane->registration; ?><br>
                         <?php endif; ?>
                         <?php

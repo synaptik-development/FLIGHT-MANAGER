@@ -13,7 +13,7 @@
     <!-- <a class="dashboard-link" href="index.php">tableau de bord</a> -->
 
     <main class="user_main">
-        <?php if ($user->userId === $_SESSION['userId'] || $user->isManager == 1) : ?>
+        <?php if ($user->id === $_SESSION['userId'] || $user->isManager == 1) : ?>
         <strong><?= $user->lastname . ' ' . $user->firstname ?></strong>
 
         <?php if ($user->isPilot == 1) : ?>
@@ -46,11 +46,14 @@
             <span><?= $user->credits . ' €' ?></span>
         </p>
 
+        <?php if ($user->id === $_SESSION['userId']) : ?>
         <p>
             Mot de passe :
             <span><?= $user->password ?> </span>
-            <strong class="text-link" id="reveal_update-password-form">modifier</strong>
+            (<a href="index.php?action=updatePassword&userId=<?= $user->id; ?>" class="text-link"
+                id="reveal_update-password-form">modifier</a>)
         </p>
+        <?php endif; ?>
 
         <div class="btn btn--alert" id="reveal_delete-user-form">supprimer le compte</div>
 
@@ -63,7 +66,7 @@
 
 <!-- formulaire suppression du compte -->
 <div class="absolute-window background-window hidden" id="delete-user-form">
-    <form class="fixed-window" action="index.php?action=deleteUser&userId=<?= $user->userId ?>" method="POST">
+    <form class="fixed-window" action="index.php?action=deleteProfil&userId=<?= $user->id; ?>" method="POST">
         <h2>suppression du compte</h2>
         <input type="password" name="password" id="password" placeholder=" Mot de passe">
         <button class="btn btn--alert" type="submit">supprimer</button>
@@ -71,17 +74,6 @@
     </form>
 </div>
 
-<!-- formulaire modification du mot de passe -->
-<div class="absolute-window background-window hidden" id="update-password-form">
-    <form class="fixed-window" action="index.php?action=updatePassword&userId=<?= $user->userId ?>" method="POST">
-        <h2>modifier le mot de passe</h2>
-        <input type="password" name="password" id="password" placeholder=" Ancien mot de passe">
-        <input type="password" name="new-password" id="new-password" placeholder=" Nouveau mot de passe">
-        <input type="password" name="confirm-password" id="confirm-password" placeholder=" Confirmer mot de passe">
-        <button class="btn" type="submit">valider</button>
-        <p class="cancel text-link">annuler</p>
-    </form>
-</div>
 
 <?php $content = ob_get_clean(); ?>
 

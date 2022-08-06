@@ -19,47 +19,55 @@ implémentation du router
 */
 
 if (isset($_SESSION["userId"]) && !empty($_SESSION["userId"])) {
-    $userId = $_SESSION['userId'];
     try {
+        //si une action est demandé on l'éxécute
         if (isset($_GET['action']) && $_GET['action'] !== '') {
-            // voir profil
+
+            // voir le profil
             if ($_GET['action'] === 'user') {
-                if (isset($_GET['userId']) && $_GET['userId'] > 0) {
-                    $userId = $_GET['userId'];
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $userId = $_GET['id'];
+
                     (new User())->execute($userId);
                 } else {
-                    throw new Exception('Aucun utilisateur sélectionné.');
+                    throw new Exception('Aucun utilisateur sélectionné');
                 }
             }
 
             // modifier le mot de passe
             elseif ($_GET['action'] === 'updatePassword') {
-                if (
-                    isset($_GET['userId']) && $_GET['userId'] > 0
-                ) {
+                if (isset($_GET['userId']) && $_GET['userId'] > 0) {
                     $userId = $_GET['userId'];
-                    (new UpdatePassword())->execute($_POST);
+                    // si le formulaire est soumis on définit le point d'entrée
+                    $input = null;
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $input = $_POST;
+                    }
+
+                    (new UpdatePassword())->execute($input, $userId);
                 } else {
-                    throw new Exception('Aucun utilisateur sélectionné.');
+                    throw new Exception('Aucun utilisateur sélectionné');
                 }
             }
         }
 
-        // retour à la page d'accueil
+        // si aucune action n'est demandé on retourne à la page d'accueil
         else {
-            (new Homepage())->execute($userId);
+            (new Homepage())->execute($_SESSION['userId']);
         }
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
 
         require('templates/error.php');
     }
-} else {
-    /*
+}
+
+/*
     si aucune session n'est ouverte
     nouvelle page de connexion
-    */
+    */ else {
     include_once('templates/login.php');
+
     try {
         if (
             isset($_GET['action']) && $_GET['action'] !== ''

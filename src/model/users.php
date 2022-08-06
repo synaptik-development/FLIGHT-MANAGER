@@ -11,7 +11,7 @@ use DateTime;
 
 class User
 {
-    public string $userId;
+    public string $id;
     public string $firstname;
     public string $lastname;
     public string $email;
@@ -38,7 +38,7 @@ class UsersRepository
         $users = [];
         while ($row = $statement->fetch()) {
             $user = new User();
-            $user->userId = $row['id'];
+            $user->id = $row['id'];
             $user->firstname = $row['firstname'];
             $user->lastname = $row['lastname'];
             $user->email = $row['email'];
@@ -68,7 +68,7 @@ class UsersRepository
         }
 
         $user = new User();
-        $user->userId = $row['id'];
+        $user->id = $row['id'];
         $user->firstname = $row['firstname'];
         $user->lastname = $row['lastname'];
         $user->email = $row['email'];
@@ -97,7 +97,7 @@ class UsersRepository
         }
 
         $user = new User();
-        $user->userId = $row['id'];
+        $user->id = $row['id'];
         $user->firstname = $row['firstname'];
         $user->lastname = $row['lastname'];
         $user->email = $row['email'];

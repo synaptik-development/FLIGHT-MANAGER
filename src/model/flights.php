@@ -14,7 +14,7 @@ use DateTime;
 
 class Flight
 {
-    public string $flightId;
+    public string $id;
     public string $userId;
     public string $planeId;
     public DateTime $departure;
@@ -37,7 +37,7 @@ class FlightsRepository
         $flights = [];
         while ($row = $statement->fetch()) {
             $flight = new Flight();
-            $flight->flightId = $row['id'];
+            $flight->id = $row['id'];
             $flight->userId = $row['user_id'];
             $flight->planeId = $row['plane_id'];
             $flight->departure = new DateTime($row['departure']);
@@ -59,7 +59,7 @@ class FlightsRepository
         $flights = [];
         while ($row = $statement->fetch()) {
             $flight = new Flight();
-            $flight->flightId = $row['id'];
+            $flight->id = $row['id'];
             $flight->userId = $row['user_id'];
             $flight->planeId = $row['plane_id'];
             $flight->departure = new DateTime($row['departure']);
@@ -84,7 +84,7 @@ class FlightsRepository
         }
 
         $flight = new Flight();
-        $flight->flightId = $row['id'];
+        $flight->id = $row['id'];
         $flight->userId = $row['user_id'];
         $flight->planeId = $row['plane_id'];
         $flight->departure = new DateTime($row['departure']);
