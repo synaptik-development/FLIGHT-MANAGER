@@ -4,7 +4,7 @@
   gap: 0.5rem;
   padding: 0.5rem;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   text-align: center;
   align-items: center;
@@ -24,31 +24,33 @@
   bottom: 0.2rem;
 }
 
-.hidden {
-  display: none;
-}
-
-.background-window {
-  background-color: rgba(0, 0, 0, 0.377);
-}
-
 .text-link {
-  color: #4306e9;
+  color: rgba(104, 103, 103, 0.849);
   text-decoration: underline;
   transition: 500ms;
   cursor: pointer;
 }
 .text-link:hover {
-  color: #0670e9;
+  color: rgba(177, 169, 169, 0.849);
+}
+
+.text-link--danger {
+  color: rgb(131, 7, 7);
+  text-decoration: underline;
+  transition: 500ms;
+  cursor: pointer;
+}
+.text-link--danger:hover {
+  color: rgb(184, 72, 72);
 }
 
 .btn {
   background-color: rgb(175, 170, 170);
   color: white;
   transition: 500ms;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  padding: 0.5rem;
+  padding: 0.3rem 1rem;
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
@@ -57,7 +59,7 @@
   background-color: rgb(128, 124, 124);
 }
 .btn--alert {
-  background-color: rgb(184, 72, 72);
+  background-color: rgb(131, 7, 7);
 }
 .btn--alert:hover {
   background-color: rgb(158, 0, 0);
@@ -71,7 +73,7 @@ input {
 }
 
 .alert {
-  color: rgb(184, 72, 72);
+  color: rgb(131, 7, 7);
 }
 
 .header {
@@ -141,7 +143,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.438);
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   justify-content: space-around;
   align-items: center;
@@ -173,7 +175,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.438);
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   width: 50%;
   box-sizing: border-box;
@@ -194,7 +196,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.438);
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .homepage_main_events_items .event-item {
@@ -218,7 +220,7 @@ body {
   gap: 0.5rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.438);
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 2rem auto;
   width: fit-content;
@@ -227,11 +229,6 @@ body {
 }
 .user_main span {
   color: rgba(104, 103, 103, 0.849);
-}
-
-/* page error */
-#error-message {
-  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

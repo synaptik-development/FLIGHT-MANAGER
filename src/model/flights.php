@@ -9,9 +9,6 @@ require_once('src/lib/database.php');
 use App\Lib\Database\DatabaseConnection;
 use DateTime;
 
-// $flight->date = date_format(new DateTime($row['departure']), 'd-m-Y');
-// $flight->arrival = date_format(new DateTime($row['arrival']), 'H:i');
-
 class Flight
 {
     public string $id;

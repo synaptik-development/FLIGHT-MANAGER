@@ -7,7 +7,7 @@
     <header class="header header--connected">
         <div class="header_username">
             <?= $user->lastname . ' ' . $user->firstname; ?><br>
-            <a href="index.php?action=user&id=<?= urlencode($user->id) ?>">voir profil</a>
+            <a class="text-link" href="index.php?action=user&id=<?= urlencode($user->id) ?>">voir profil</a>
         </div>
 
         <div class="header_title">
