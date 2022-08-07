@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Users\Register;
+namespace App\Controllers\Users\CreateUser;
 
 require_once('src/lib/database.php');
 require_once('src/model/users.php');
@@ -10,7 +10,7 @@ require_once('src/model/users.php');
 use App\Lib\Database\DatabaseConnection;
 use App\Model\Users\UsersRepository;
 
-class Register
+class CreateUser
 {
     public function execute()
     {

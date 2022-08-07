@@ -106,7 +106,7 @@ class FlightsRepository
     public function deleteFlight(string $flightId)
     {
         $statement = $this->dbConnect->getConnection()->prepare(
-            "DELETE * FROM flights WHERE id = ?"
+            "DELETE FROM flights WHERE id = ?"
         );
         $success = $statement->execute([$flightId]);
 

@@ -7,11 +7,15 @@ require_once('src/controllers/login.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/users/user.php');
 require_once('src/controllers/users/updatePassword.php');
+require_once('src/controllers/flights/flight.php');
+require_once('src/controllers/flights/delete.php');
 
 use App\Controllers\Login\Login;
 use App\Controllers\Homepage\Homepage;
 use App\Controllers\Users\User\User;
 use App\Controllers\Users\UpdatePassword\UpdatePassword;
+use App\Controllers\Flights\Flight\Flight;
+use App\Controllers\Flights\DeleteFlight\DeleteFlight;
 
 /*
 si une session utilisateur est ouverte
@@ -47,6 +51,28 @@ if (isset($_SESSION["userId"]) && !empty($_SESSION["userId"])) {
                     (new UpdatePassword())->execute($input, $userId);
                 } else {
                     throw new Exception('Aucun utilisateur sélectionné');
+                }
+            }
+
+            // voir un vol
+            elseif ($_GET['action'] === 'flight') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    $flightId = $_GET['id'];
+
+                    (new Flight())->execute($flightId);
+                } else {
+                    throw new Exception('Aucun vol sélectionné');
+                }
+            }
+
+            // annuler un vol
+            elseif ($_GET['action'] === 'deleteFlight') {
+                if (isset($_GET['flightId']) && $_GET['flightId'] > 0) {
+                    $flightId = $_GET['flightId'];
+
+                    (new DeleteFlight())->execute($flightId);
+                } else {
+                    throw new Exception('Aucun vol sélectionné');
                 }
             }
         }

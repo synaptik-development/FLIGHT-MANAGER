@@ -47,7 +47,7 @@
                     foreach ($todayFlights as $flight) {
                     ?>
                 <div class="event-item">
-                    <a href="#">
+                    <a href="index.php?action=flight&id=<?= $flight->id; ?>">
                         n° de vol : <?= $flight->id; ?><br>
                         <?php
                                 foreach ($planes as $plane) {
@@ -77,7 +77,7 @@
                     foreach ($otherFligths as $flight) {
                     ?>
                 <div class="event-item">
-                    <a href="#">
+                    <a href="index.php?action=flight&id=<?= $flight->id; ?>">
                         n° de vol : <?= $flight->id; ?><br>
                         date : <?= date_format($flight->departure, 'd-m-Y'); ?><br>
                         <?php
