@@ -27,15 +27,19 @@
     <main class="homepage_main">
         <div class="homepage_main_calendar">
             <?php if ($user->isPilot == 1) : ?>
-            <div class="homepage_main_calendar_calendar">
-                <!-- calendrier ici -->
-            </div>
+                <div class="homepage_main_calendar_calendar">
+                    <!-- calendrier ici -->
+                    <form action="index.php?action=createFlight" method="POST">
+                        <label for="date">choisissez une date</label>
+                        <input type="date" id="date" name="date">
+                    </form>
+                </div>
 
-            <div class="homepage_main_calendar_link">
-                <div class="btn">programmer un vol</div>
-            </div>
+                <div class="homepage_main_calendar_link">
+                    <div class="btn">programmer un vol</div>
+                </div>
             <?php else : ?>
-            <div class="alert">Impossible de planifier un vol. Vous n'êtes pas inscrit en tant que pilote.</div>
+                <div class="alert">Impossible de planifier un vol. Vous n'êtes pas inscrit en tant que pilote.</div>
             <?php endif; ?>
         </div>
 
@@ -43,61 +47,61 @@
             <div class="homepage_main_events_items">
                 <h3>Aujourd'hui</h3>
                 <?php if (isset($todayFlights) & !empty($todayFlights)) : ?>
-                <?php
+                    <?php
                     foreach ($todayFlights as $flight) {
                     ?>
-                <div class="event-item">
-                    <a href="index.php?action=flight&id=<?= $flight->id; ?>">
-                        n° de vol : <?= $flight->id; ?><br>
-                        <?php
+                        <div class="event-item">
+                            <a href="index.php?action=flight&id=<?= $flight->id; ?>">
+                                n° de vol : <?= $flight->id; ?><br>
+                                <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                        <?php if ($plane->id == $flight->id) : ?>
-                        appareil : <?= $plane->registration; ?><br>
-                        <?php endif; ?>
-                        <?php
+                                    <?php if ($plane->id == $flight->id) : ?>
+                                        appareil : <?= $plane->registration; ?><br>
+                                    <?php endif; ?>
+                                <?php
                                 }
                                 ?>
-                        départ : <?= date_format($flight->departure, 'h:m') . ' h'; ?><br>
-                        arrivée : <?= date_format($flight->arrival, 'h:m') . ' h'; ?>
-                    </a>
-                </div>
-                <?php
+                                départ : <?= date_format($flight->departure, 'h:m') . ' h'; ?><br>
+                                arrivée : <?= date_format($flight->arrival, 'h:m') . ' h'; ?>
+                            </a>
+                        </div>
+                    <?php
                     }
                     ?>
                 <?php else : ?>
-                <p>Aucun vol programmé</p>
+                    <p>Aucun vol programmé</p>
                 <?php endif; ?>
             </div>
 
             <div class="homepage_main_events_items">
                 <h3>Prochainement</h3>
                 <?php if (isset($otherFligths) & !empty($otherFligths)) : ?>
-                <?php
+                    <?php
                     foreach ($otherFligths as $flight) {
                     ?>
-                <div class="event-item">
-                    <a href="index.php?action=flight&id=<?= $flight->id; ?>">
-                        n° de vol : <?= $flight->id; ?><br>
-                        date : <?= date_format($flight->departure, 'd-m-Y'); ?><br>
-                        <?php
+                        <div class="event-item">
+                            <a href="index.php?action=flight&id=<?= $flight->id; ?>">
+                                n° de vol : <?= $flight->id; ?><br>
+                                date : <?= date_format($flight->departure, 'd-m-Y'); ?><br>
+                                <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                        <?php if ($plane->id == $flight->id) : ?>
-                        appareil : <?= $plane->registration; ?><br>
-                        <?php endif; ?>
-                        <?php
+                                    <?php if ($plane->id == $flight->id) : ?>
+                                        appareil : <?= $plane->registration; ?><br>
+                                    <?php endif; ?>
+                                <?php
                                 }
                                 ?>
-                        départ : <?= date_format($flight->departure, 'H:i') . ' h'; ?><br>
-                        arrivée : <?= date_format($flight->arrival, 'H:i') . ' h'; ?>
-                    </a>
-                </div>
-                <?php
+                                départ : <?= date_format($flight->departure, 'H:i') . ' h'; ?><br>
+                                arrivée : <?= date_format($flight->arrival, 'H:i') . ' h'; ?>
+                            </a>
+                        </div>
+                    <?php
                     }
                     ?>
                 <?php else : ?>
-                <p>Aucun vol programmé</p>
+                    <p>Aucun vol programmé</p>
                 <?php endif; ?>
             </div>
         </div>

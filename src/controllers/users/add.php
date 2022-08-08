@@ -10,7 +10,7 @@ require_once('src/model/users.php');
 use App\Lib\Database\DatabaseConnection;
 use App\Model\Users\UsersRepository;
 
-class CreateUser
+class AddUser
 {
     public function execute()
     {

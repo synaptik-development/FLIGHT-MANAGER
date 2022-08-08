@@ -146,7 +146,7 @@ class UsersRepository
     }
 
     // créditer le compte
-    public function addCredits(float $credits, string $userId): bool
+    public function addCredits(string $credits, string $userId): bool
     {
         $statement = $this->dbConnect->getConnection()->prepare(
             "UPDATE users SET credits = credits + ? WHERE id = ?"
@@ -157,7 +157,7 @@ class UsersRepository
     }
 
     // débiter le compte
-    public function removeCredits(float $credits, string $userId): bool
+    public function removeCredits(string $credits, string $userId): bool
     {
         $statement = $this->dbConnect->getConnection()->prepare(
             "UPDATE users SET credits = credits - ? WHERE id = ?"

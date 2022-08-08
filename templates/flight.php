@@ -34,6 +34,11 @@
                 </p>
 
                 <p>
+                    Durée de vol :
+                    <span><?= $flight->duration . ' H'; ?></span>
+                </p>
+
+                <p>
                     Prix :
                     <span><?= $flight->price . ' €'; ?></span>
                 </p>

@@ -12,6 +12,7 @@ require_once('src/model/flights.php');
 use App\Lib\Database\DatabaseConnection;
 use App\Model\Users\UsersRepository;
 use App\Model\Flights\FlightsRepository;
+use App\Model\Planes\PlanesRepository;
 
 class DeleteFlight
 {
@@ -32,7 +33,22 @@ class DeleteFlight
             if (!$success) {
                 throw new \Exception('Impossible d\'annuler le vol');
             } else {
-                header('location: index.php');
+
+                $updateCredits = $usersRepository->removeCredits($flight->price, $_SESSION['userId']);
+                $updateUserCounter = $usersRepository->removetimeCounter($flight->duration, $_SESSION['userId']);
+                $planeRepository = new PlanesRepository();
+                $planeRepository->dbConnect = new DatabaseConnection();
+                $updatePlaneCounter = $planeRepository->removetimeCounter($flight->duration, $flight->planeId);
+
+                if (!$updateUserCounter) {
+                    throw new \Exception('Impossible de mettre à jour le compteur d\'heures du pilote');
+                } elseif (!$updateCredits) {
+                    throw new \Exception('Impossible de mettre à jour le portefeuille du pilote');
+                } elseif (!$updatePlaneCounter) {
+                    throw new \Exception('Impossible de mettre à jour le compteur de l\'appareil');
+                } else {
+                    header('location: index.php');
+                }
             }
         } else {
             throw new \Exception('Opération non autorisée');

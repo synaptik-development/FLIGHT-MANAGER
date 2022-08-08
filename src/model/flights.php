@@ -39,6 +39,7 @@ class FlightsRepository
             $flight->planeId = $row['plane_id'];
             $flight->departure = new DateTime($row['departure']);
             $flight->arrival = new DateTime($row['arrival']);
+            $flight->duration = $row['duration'];
             $flight->price = $row['price'];
             $flights[] = $flight;
         }
@@ -61,6 +62,7 @@ class FlightsRepository
             $flight->planeId = $row['plane_id'];
             $flight->departure = new DateTime($row['departure']);
             $flight->arrival = new DateTime($row['arrival']);
+            $flight->duration = $row['duration'];
             $flight->price = $row['price'];
             $flights[] = $flight;
         }
@@ -86,6 +88,7 @@ class FlightsRepository
         $flight->planeId = $row['plane_id'];
         $flight->departure = new DateTime($row['departure']);
         $flight->arrival = new DateTime($row['arrival']);
+        $flight->duration = $row['duration'];
         $flight->price = $row['price'];
 
         return $flight;

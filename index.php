@@ -9,6 +9,7 @@ require_once('src/controllers/users/user.php');
 require_once('src/controllers/users/updatePassword.php');
 require_once('src/controllers/flights/flight.php');
 require_once('src/controllers/flights/delete.php');
+require_once('src/controllers/flights/add.php');
 
 use App\Controllers\Login\Login;
 use App\Controllers\Homepage\Homepage;
@@ -16,6 +17,7 @@ use App\Controllers\Users\User\User;
 use App\Controllers\Users\UpdatePassword\UpdatePassword;
 use App\Controllers\Flights\Flight\Flight;
 use App\Controllers\Flights\DeleteFlight\DeleteFlight;
+use App\Controllers\Flights\Add\AddFlight;
 
 /*
 si une session utilisateur est ouverte
@@ -73,6 +75,14 @@ if (isset($_SESSION["userId"]) && !empty($_SESSION["userId"])) {
                     (new DeleteFlight())->execute($flightId);
                 } else {
                     throw new Exception('Aucun vol sélectionné');
+                }
+            }
+
+            // planifier un vol
+            elseif ($_GET['action'] === 'createFlight') {
+                $input = null;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $input = $_POST;
                 }
             }
         }
