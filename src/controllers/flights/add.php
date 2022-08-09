@@ -14,10 +14,16 @@ class AddFlight
 {
     public string $errorMessage;
 
-    public function execute()
+    public function execute(?array $input)
     {
-        if (!isset($_SESSION["connectedUser"])) {
-            $errorMessage = "Vous devez être connecté pour planifier un vol";
+        if ($input !== null) {
+            $date = null;
+            if (!empty($input['date'])) {
+                $date = $input['date'];
+            }
+            var_dump($date);
         }
+
+        require_once('templates/homepage.php');
     }
 }

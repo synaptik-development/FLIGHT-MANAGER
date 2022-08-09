@@ -11,7 +11,13 @@
         </div>
 
         <div class="header_title">
-            <img src="images/logo.png" alt="logo flight-manager">
+            <?php if ($user->isManager == 1) : ?>
+                <a href="index.php?action=management">
+                    <img src="images/logo.png" alt="logo flight-manager">
+                </a>
+            <?php else : ?>
+                <img src="images/logo.png" alt="logo flight-manager">
+            <?php endif; ?>
             <h1>FLIGHT-MANAGER</h1>
         </div>
 
@@ -29,9 +35,10 @@
             <?php if ($user->isPilot == 1) : ?>
                 <div class="homepage_main_calendar_calendar">
                     <!-- calendrier ici -->
-                    <form action="index.php?action=createFlight" method="POST">
+                    <form action="index.php?action=addFlight" method="POST">
                         <label for="date">choisissez une date</label>
                         <input type="date" id="date" name="date">
+                        <input type="submit" />
                     </form>
                 </div>
 
@@ -56,7 +63,7 @@
                                 <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                                    <?php if ($plane->id == $flight->id) : ?>
+                                    <?php if ($plane->id === $flight->planeId) : ?>
                                         appareil : <?= $plane->registration; ?><br>
                                     <?php endif; ?>
                                 <?php
@@ -87,7 +94,7 @@
                                 <?php
                                 foreach ($planes as $plane) {
                                 ?>
-                                    <?php if ($plane->id == $flight->id) : ?>
+                                    <?php if ($plane->id === $flight->planeId) : ?>
                                         appareil : <?= $plane->registration; ?><br>
                                     <?php endif; ?>
                                 <?php

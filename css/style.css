@@ -259,4 +259,12 @@ body {
   width: fit-content;
 }
 
+/* page management */
+.management_main {
+  display: flex;
+}
+.management_main a {
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=style.css.map */
